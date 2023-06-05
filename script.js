@@ -3,16 +3,18 @@ const section = document.querySelector('section');
 
 create.addEventListener('click',() => {
     section.style.display = 'flex'
-    let hours = new Date().getHours();
-    let minutes = new Date().getMinutes();
-    let p = document.createElement('p');
-    p.innerHTML = `Diedit ${hours}:${minutes}`;
-    let span = document.createElement('span');
-    span.innerHTML = '&#129120;'
-    span.appendChild(p);
-    section.appendChild(span);
-
+    let div = document.createElement('div');
+    div.classList.add('box');
     let textarea = document.createElement('textarea');
-    section.appendChild(textarea);
-    create.style.display = 'none';
+    let span = document.createElement('span');
+    span.innerHTML = '&#x1F5D1';
+    div.appendChild(textarea);
+    div.appendChild(span);
+    section.appendChild(div);
+});
+
+section.addEventListener('click',(e) => {
+    if(e.target.tagName === 'SPAN'){
+        e.target.parentElement.remove();
+    }
 })
